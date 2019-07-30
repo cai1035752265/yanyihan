@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .option .active {
+            background: red;       
+        }
+        .inner div {
+            font-size: 100px;
+            display: none;
+        }
+        .inner .show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <div class="option">
+        <button class="active">选项1</button>
+        <button>选项2</button>
+        <button>选项3</button>
+    </div>
+    <div class="inner">
+        <div class="show">内容1</div>
+        <div>内容2</div>
+        <div>内容3</div>
+    </div>
+</div>  
+<body>
+<div class="wrap" id="tab1">
+    <div class="option">
+        <button class="active">选项1</button>
+        <button>选项2</button>
+        <button>选项3</button>
+    </div>
+    <div class="inner">
+        <div class="show">内容1</div>
+        <div>内容2</div>
+        <div>内容3</div>
+    </div>
+</div>  
+<body>
+<div class="wrap" id="tab2">
+    <div class="option">
+        <button class="active">选项1</button>
+        <button>选项2</button>
+        <button>选项3</button>
+    </div>
+    <div class="inner">
+        <div class="show">内容1</div>
+        <div>内容2</div>
+        <div>内容3</div>
+    </div>
+</div>  
+<script src="../common/common.js"></script>
+<script>
+    var wraps = $('.wrap');
+    var inners = $('.inner');
+    for(var i = 0; i < wraps.length ;i++){
+        fn(wraps[i], i);
+    }
+    function fn($elem, i){
+        var btns = $('button', $elem);
+        var innerDivs = $('.inner div', $elem);
+        var cur = 0;
+        for(let j = 0; j < btns.length ;j++){
+            btns[j].onclick = function(){
+                btns[cur].classList.remove('active');
+                this.classList.add('active');
+                innerDivs[cur].classList.remove('show');
+                innerDivs[j].classList.add('show');
+                cur = j;
+            }
+        }
+    }
+</script>  
+</body>
+</html>
