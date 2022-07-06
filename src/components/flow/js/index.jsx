@@ -145,8 +145,6 @@ export default class FlowGraph {
         enabled: editIsSHow,
       },
       shouldUpdateHTMLComponent(node) {
-        console.log("dataChange");
-        // const data = node.getData();
         return node.hasChanged("data");
       },
     });
@@ -195,7 +193,6 @@ export default class FlowGraph {
         rowHeight: 55,
       },
     });
-    console.log(document.getElementById("flowStencil"));
     const stencilContainer = document.querySelector("#flowStencil");
     stencilContainer.appendChild(this.stencil.container);
   }
@@ -565,7 +562,6 @@ export default class FlowGraph {
   }
   // 载入数据
   static initGraphShape(item) {
-    console.log("initGraphShape", item);
     this.graph.fromJSON(item);
   }
   // 销毁

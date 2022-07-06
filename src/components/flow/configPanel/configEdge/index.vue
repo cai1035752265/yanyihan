@@ -174,7 +174,6 @@ export default {
         }
       });
       this.curEdge.setLabels(pathConfig); // 标签设置
-      console.log(this.curEdge);
     },
     // 处理
     nodeOpt(id) {

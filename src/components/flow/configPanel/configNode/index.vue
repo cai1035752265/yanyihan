@@ -92,7 +92,6 @@ export default {
   },
   watch: {
     nodeIdCpt(nv) {
-      console.log(nv, this.shapeType);
       this.nodeAttrConfigs =
         this.shapeType === "html"
           ? [
@@ -177,13 +176,11 @@ export default {
   methods: {
     // 设置
     primary() {
-      console.log("primary");
       this.setNodeValue();
       this.$emit("configClick", "node");
     },
     // 处理
     nodeOpt(id) {
-      console.log("nodeOpt");
       let curCel = null;
       if (id) {
         const { graph } = FlowGraph;
@@ -193,7 +190,6 @@ export default {
         }
         curCel = cell;
         if (this.shapeType === "html") {
-          console.log(curCel.store.data.data);
           const data = JSON.parse(JSON.stringify(cell.store.data.data));
           this.codeOptions = data.codeOptions;
           this.nodeAttrConfigs.forEach((item, index) => {
@@ -210,9 +206,7 @@ export default {
       return curCel;
     },
     setNodeValue() {
-      console.log("setNodeValue");
       if (this.shapeType === "html") {
-        console.log(this.curCel);
         let newData = cloneDeep(this.curCel.getData());
         this.nodeAttrConfigs.forEach((item) => {
           newData[item.key] = item.value;
@@ -227,15 +221,13 @@ export default {
     // 取消
     reset() {
       if (
-        JSON.stringify(this.oldNodeAttrConfigs) ===
+        JSON.stringify(this.oldNodeAttrConfigs) !==
         JSON.stringify(this.nodeAttrConfigs)
       ) {
-        this.$emit("configClick", "node");
-      } else {
         this.nodeAttrConfigs = cloneDeep(this.oldNodeAttrConfigs);
         this.setNodeValue();
-        this.$emit("configClick", "node");
       }
+      this.$emit("configClick", "node");
     },
     onFormItemChange($event, type, index) {
       let curItem = this.nodeAttrConfigs[index];
@@ -250,7 +242,6 @@ export default {
         curItem.value = $event;
       }
       this.$forceUpdate();
-      console.log(this.nodeAttrConfigs);
     },
   },
 };
