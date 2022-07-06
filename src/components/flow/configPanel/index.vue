@@ -13,14 +13,14 @@
     <!-- 右侧 -->
     <div class="config" v-show="configIsShow">
       <config-node
-        v-show="type == 'node'"
+        v-show="type === 'node'"
         @configClick="configClick"
         :id="id"
         :shapeType="shapeType"
       />
       <config-edge
-        v-show="type == 'edge'"
-        @configClick="configClick"
+        v-show="type === 'edge'"
+        @configclick="configClick"
         :id="id"
       />
     </div>
@@ -109,7 +109,7 @@ export default {
       });
       // 鼠标点击节点或者线
       graph.on("cell:click", ({ cell }) => {
-        if (this.removeToolsCell != "") {
+        if (this.removeToolsCell !== "") {
           this.removeToolsCell.removeTools();
         }
         this.edgeAnimationDelete();
@@ -196,10 +196,10 @@ export default {
     },
     //关闭右侧设置
     configClick(name) {
-      if (name == "edge") {
+      if (name === "edge") {
         this.edgeAnimationDelete();
         //清除工具集
-        if (this.removeToolsCell != "") {
+        if (this.removeToolsCell !== "") {
           this.removeToolsCell.removeTools();
         }
       }
@@ -280,7 +280,7 @@ export default {
       this.configIsShow = false;
       this.selectIsShow = false;
       //清除工具集
-      if (this.removeToolsCell != "") {
+      if (this.removeToolsCell !== "") {
         // this.removeToolsCell.vertices=[]
         this.removeToolsCell.removeTools();
       }

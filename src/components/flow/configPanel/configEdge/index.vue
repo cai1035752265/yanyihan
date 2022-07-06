@@ -146,7 +146,7 @@ export default {
     // 设置
     primary() {
       this.setNodeValue();
-      this.$emit("configClick", "edge");
+      this.$emit("configclick", "edge");
     },
     setNodeValue() {
       const pathConfig = [
@@ -196,7 +196,7 @@ export default {
           if (item.path) {
             if (item.path === "label") {
               this.lineAttrConfigs[index].value =
-                edge.labels.length == 0
+                edge.labels.length === 0
                   ? defaultLabelConfig[item.key]
                   : get(
                       JSON.parse(JSON.stringify(edge.labels))[0],
@@ -207,7 +207,7 @@ export default {
             }
           } else {
             this.lineAttrConfigs[index].value =
-              edge.connector == undefined
+              edge.connector === undefined
                 ? "normal"
                 : JSON.parse(JSON.stringify(edge.connector)).name;
           }
@@ -245,7 +245,7 @@ export default {
     // 取消
     reset() {
       // this.curEdge.removeTools();
-      this.$emit("configClick", "edge");
+      this.$emit("configclick", "edge");
     },
   },
 };

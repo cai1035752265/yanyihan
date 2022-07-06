@@ -177,7 +177,7 @@ export default {
     // 设置
     primary() {
       this.setNodeValue();
-      this.$emit("configClick", "node");
+      this.$emit("configclick", "node");
     },
     // 处理
     nodeOpt(id) {
@@ -227,7 +227,7 @@ export default {
         this.nodeAttrConfigs = cloneDeep(this.oldNodeAttrConfigs);
         this.setNodeValue();
       }
-      this.$emit("configClick", "node");
+      this.$emit("configclick", "node");
     },
     onFormItemChange($event, type, index) {
       let curItem = this.nodeAttrConfigs[index];
